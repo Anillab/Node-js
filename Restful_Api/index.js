@@ -20,14 +20,14 @@ const server=http.createServer((req,res) =>{
   const headers=req.headers;
   // payloads
   const decoder=new StringDecoder('utf8');
-  const buffer ='';
+  let buffer ='';
 
   req.on('data',function(data){
     buffer +=decoder.write(data)
   });
 
   req.on('end',function(){
-     buffer +=decoder.end();
+     buffer +=decoder.end()
     // send the response
     res.end('Hello World!\n')
     console.log(buffer);
